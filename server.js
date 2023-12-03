@@ -30,19 +30,28 @@ db.connect((err) => {
 
 // untuk get data
 app.get("/", (req, res) => {
-  res.send(users);
+  const sql = "SELECT * FROM booking";
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    const users = JSON.parse(JSON.stringify(result));
+    res.send(users);
+  });
 });
 
 // unutuk insert data
-app.post("/", (req, res) => {
+app.post("/post", (req, res) => {
   const insertSql = `INSERT INTO booking (full_name, phone, check_in, check_out) VALUES ('${req.body.full_name}', 
       '${req.body.phone}', 
       '${req.body.check_in}', 
       '${req.body.check_out}')`;
 
   db.query(insertSql, (err, result) => {
-    if (err) throw err;
-    res.redirect("/");
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    } else {
+      res.json({ message: "Data berhasil ditambahkan" });
+    }
   });
 });
 
