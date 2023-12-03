@@ -25,24 +25,24 @@ db.connect((err) => {
   db.query(sql, (err, result) => {
     const users = JSON.parse(JSON.stringify(result));
     console.log("hasil database -> ", users);
+  });
+});
 
-    // untuk get data
-    app.get("/", (req, res) => {
-      res.send(users);
-    });
+// untuk get data
+app.get("/", (req, res) => {
+  res.send(users);
+});
 
-    // unutuk insert data
-    app.post("/", (req, res) => {
-      const insertSql = `INSERT INTO booking (full_name, phone, check_in, check_out) VALUES ('${req.body.full_name}', 
+// unutuk insert data
+app.post("/", (req, res) => {
+  const insertSql = `INSERT INTO booking (full_name, phone, check_in, check_out) VALUES ('${req.body.full_name}', 
       '${req.body.phone}', 
       '${req.body.check_in}', 
       '${req.body.check_out}')`;
 
-      db.query(insertSql, (err, result) => {
-        if (err) throw err;
-        res.redirect("/");
-      });
-    });
+  db.query(insertSql, (err, result) => {
+    if (err) throw err;
+    res.redirect("/");
   });
 });
 
