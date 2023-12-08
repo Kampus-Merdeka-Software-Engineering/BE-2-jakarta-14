@@ -10,10 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-  host: "viaduct.proxy.rlwy.net",
+  host: "localhost",
   user: "root",
-  password: "bC1hBhdBDd22HEeAcfHDb6AaEA6Fda46",
-  database: "railway",
+  password: "",
+  database: "dribbble",
 });
 
 db.connect((err) => {
