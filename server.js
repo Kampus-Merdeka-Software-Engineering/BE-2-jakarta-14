@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-  host: process.env.DB_SQL_HOST || "hydroflow.id",
-  user: process.env.DB_SQL_USER || "vpuijmph_revou",
-  password: process.env.DB_SQL_PASS || ",IaU]lJC%5e.",
-  database: process.env.DB_SQL_NAME || "vpuijmph_revou",
+  host: process.env.DB_SQL_HOST || "hmonorail.proxy.rlwy.net",
+  user: process.env.DB_SQL_USER || "root",
+  password: process.env.DB_SQL_PASS || "bfh4CC-h1e-GBcFH2He6G1h6F34bBc33",
+  database: process.env.DB_SQL_NAME || "railway",
 });
 
 db.connect((err) => {
