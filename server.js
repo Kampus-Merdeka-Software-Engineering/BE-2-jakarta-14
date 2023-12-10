@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-  host: process.env.DB_SQL_HOST || "localhost",
-  user: process.env.DB_SQL_USER || "root",
-  password: process.env.DB_SQL_PASS || "",
-  database: process.env.DB_SQL_NAME || "dribbble",
+  host: process.env.DB_SQL_HOST || "103.123.62.101",
+  user: process.env.DB_SQL_USER || "vpuijmph_revou",
+  password: process.env.DB_SQL_PASS || "revou12345!",
+  database: process.env.DB_SQL_NAME || "vpuijmph_revou",
 });
 
 db.connect((err) => {
