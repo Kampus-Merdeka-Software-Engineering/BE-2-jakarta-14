@@ -10,10 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "dribbble",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASS ||  "",
+  database: process.env.DB_NAME ||  "dribbble",
 });
 
 db.connect((err) => {
@@ -55,6 +55,6 @@ app.post("/post", (req, res) => {
   });
 });
 
-app.listen(9900, () => {
+app.listen(process.env.PORT || 9900, () => {
   console.log("server ready....");
 });
