@@ -5,15 +5,18 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+// const CyclicDb = require("@cyclic.sh/dynamodb");
+// const db = CyclicDb("tender-ant-jeansCyclicDB");
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASS ||  "",
-  database: process.env.DB_NAME ||  "dribbble",
+  host: process.env.DB_SQL_HOST || "localhost",
+  user: process.env.DB_SQL_USER || "root",
+  password: process.env.DB_SQL_PASS || "",
+  database: process.env.DB_SQL_NAME || "dribbble",
 });
 
 db.connect((err) => {
@@ -27,6 +30,8 @@ db.connect((err) => {
     console.log("hasil database -> ", users);
   });
 });
+
+// const booking = db.collection("booking")
 
 // untuk get data
 app.get("/get", (req, res) => {
