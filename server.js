@@ -34,7 +34,7 @@ db.connect((err) => {
 // const booking = db.collection("booking")
 
 // untuk get data
-app.get("/", (req, res) => {
+app.get("/get", (req, res) => {
   const sql = "SELECT * FROM booking";
   db.query(sql, (err, result) => {
     if (err) throw err;
